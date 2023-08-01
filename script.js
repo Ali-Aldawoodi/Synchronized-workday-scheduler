@@ -124,6 +124,9 @@ $(function () {
       var hourNow= dayjs().getHours();
       var targetHour = presentEl
 
+      console.log(targetHour);
+      console.log(hourNow);
+
       if (hourNow === targetHour) {
         timeBlockEl = presentEl;
       } else if (hourNow < targetHour) {
