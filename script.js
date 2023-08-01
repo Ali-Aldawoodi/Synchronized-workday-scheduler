@@ -111,18 +111,22 @@ $(function () {
 
   var timeBlockEl = document.querySelectorAll('.time-block');
   var pastEl = document.getElementById('.past');
-  var presentEl = document.getElementById('.present')
-  var futureEl = document.getElementById('.future')
+  var futureEl = document.getElementById('.future');
+  var presentEl = document.getElementById('.present');
 
-  Array.prototype.slice.call(document.querySelectorAll('.time-block'));
+
+
 
   function presentTime() {
     for (let index = 0; index < timeBlockEl; index++) {
       const element = timeBlockEl[index];
 
-      if (timeBlockEl === presentEl) {
+      var hourNow= dayjs().getHours();
+      var targetHour = presentEl
+
+      if (hourNow === targetHour) {
         timeBlockEl = presentEl;
-      } else if (timeBlockEl < presentTime) {
+      } else if (hourNow < targetHour) {
         timeBlockEl = pastEl;
       } else {
         timeBlockEl = futureEl;
@@ -133,20 +137,23 @@ $(function () {
 
   presentTime();
 
-
+  // How do equate the presentel with the current hour so that I will be able to go through the if statment and check if the current timblock is on the current hour or not and if so...?
 
     var codeContainer = document.querySelector('.container-lg');
 
     codeContainer.addEventListener('click', (event) => {
         event.preventDefault();
 
+
         if (event.target.className.includes('btn')) {
           console.log(event.target.previousElementSibling.value);
+          
         }
+        localStorage.setItem('btn', event.target.previousElementSibling)
     });
 
 
-
+    // event.target.previousElementSibling.value
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
