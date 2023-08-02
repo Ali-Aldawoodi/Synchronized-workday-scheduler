@@ -118,23 +118,26 @@ $(function () {
 function blockClass() {
   var currentTime = dayjs().format('H');
   var timeBlockEl = document.querySelectorAll('.time-block')
-  var idHour = document.querySelectorAll('id')
 
 
   timeBlockEl.forEach(function (timeBlockEl){
-    var currentHour = parseInt(timeBlockEl.getAttribute(idHour));
+    var currentHour = parseInt(timeBlockEl.getAttribute('id'));
 
-      
+      console.log(currentHour);
+      console.log(currentTime);
 
       if ( currentHour < currentTime ) {
-        timeBlockEl.classList.add('.past');
-      } else if ( currentHour === currentTime) {
-        timeBlockEl.classList.add('.present');
-        timeBlockEl.classList.remove('.past') 
+        timeBlockEl.classList.add('past');
+        timeBlockEl.classList.remove('present');
+        timeBlockEl.classList.remove('future');
+      } else if ( currentHour == currentTime) {
+        timeBlockEl.classList.add('present');
+        timeBlockEl.classList.remove('past');
+        timeBlockEl.classList.remove('future');
       } else {
-        timeBlockEl.classList.add('.future');
-        timeBlockEl.classList.remove('.present');
-        timeBlockEl.classList.remove('.past');
+        timeBlockEl.classList.add('future');
+        timeBlockEl.classList.remove('present');
+        timeBlockEl.classList.remove('past');
       }
     })
 };
