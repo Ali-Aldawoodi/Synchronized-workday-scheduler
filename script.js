@@ -96,67 +96,78 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
+
+
+
+
+
+
 $(function () {
 
   var currentDay = document.getElementById('currentDay')
 
 
   function todayDay() {
-    var now = dayjs();
+    var now = dayjs().format('dddd, MMMM D');
     currentDay.textContent = now;
   }
   todayDay();
 
 
 
-  var timeBlockEl = document.querySelectorAll('.time-block');
-  var pastEl = document.getElementById('.past');
-  var futureEl = document.getElementById('.future');
-  var presentEl = document.getElementById('.present');
+function blockClass() {
+  var currentTime = dayjs().format('H');
+  var timeBlockEl = document.querySelectorAll('.time-block')
+  var idHour = document.querySelectorAll('id')
 
 
+  timeBlockEl.forEach(function (timeBlockEl){
+    var currentHour = parseInt(timeBlockEl.getAttribute(idHour));
 
+      
 
-  function presentTime() {
-    for (let index = 0; index < timeBlockEl; index++) {
-      const element = timeBlockEl[index];
-
-      var hourNow= dayjs().getHours();
-      var targetHour = presentEl
-
-      console.log(targetHour);
-      console.log(hourNow);
-
-      if (hourNow === targetHour) {
-        timeBlockEl = presentEl;
-      } else if (hourNow < targetHour) {
-        timeBlockEl = pastEl;
+      if ( currentHour < currentTime ) {
+        timeBlockEl.classList.add('.past');
+      } else if ( currentHour === currentTime) {
+        timeBlockEl.classList.add('.present');
+        timeBlockEl.classList.remove('.past') 
       } else {
-        timeBlockEl = futureEl;
+        timeBlockEl.classList.add('.future');
+        timeBlockEl.classList.remove('.present');
+        timeBlockEl.classList.remove('.past');
       }
+    })
+};
 
-    };
-  };
+blockClass();
 
-  presentTime();
-
-  // How do equate the presentel with the current hour so that I will be able to go through the if statment and check if the current timblock is on the current hour or not and if so...?
-
-    var codeContainer = document.querySelector('.container-lg');
-
-    codeContainer.addEventListener('click', (event) => {
-        event.preventDefault();
+  
 
 
-        if (event.target.className.includes('btn')) {
-          console.log(event.target.previousElementSibling.value);
-          
-        }
-        localStorage.setItem('btn', event.target.previousElementSibling)
-    });
 
 
-    // event.target.previousElementSibling.value
+
+
+
+
+  var saveBtn = document.querySelector('.container-lg');
+  var userInput = $('description')
+
+  saveBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    var input = userInput.value
+
+    if (input === '') {
+      console.log(value);
+
+    }
+    localStorage.setItem('btn', input)
+  }
+
+);
+
+  // event.target.previousElementSibling.value
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
