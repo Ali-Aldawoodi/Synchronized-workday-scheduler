@@ -47,31 +47,6 @@
 //interate over all of the time blocks
 // conditional : if the time block is equal to the current time, give it the present class.  - if the time block is less than the current time, give it the past class. - if the time block is greater than current time, give it the future 
 
-//     var timeBlockEl = document.getElementById('.time-block');
-//     var pastEl = document.getElementById('.past');
-//     var presentEl = document.getElementById('.present')
-//     var futureEl = document.getElementById('.future')
-
-//     var timeArr = ['.past', '.present', '.future']
-
-// function presentTime () {
-//     for (let index = 0; index < timeArr.length; index++) {
-//       const element = timeArr[index];
-
-//       if (timeBlockEl === presentEl) {
-//         timeBlockEl = presentEl;
-//       } else if (timeBlockEl < presentTime) {
-//         timeBlockEl = pastEl;
-//       } else {
-//         timeBlockEl = futureEl;
-//       }
-
-//     };
-//   };
-
-
-//   presentTime();
-
 
 // WHEN I click into a timeblock
 // THEN I can enter an event
@@ -144,31 +119,26 @@ function blockClass() {
 
 blockClass();
 
-  
+
+
+  var saveBtn = document.querySelector('.btn');
+  var description = document.querySelectorAll('description')
+ 
+    saveBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      // How do i set the value below equal to the id of timeblocks? I cant call a function into this so how else?
+      if (saveBtn) {
+        localStorage.setItem('value', description.value)
+        localStorage.getItem(description.value)
+
+      }
+    });
+    
 
 
 
-
-
-
-
-
-  var saveBtn = document.querySelector('.container-lg');
-  var userInput = $('description')
-
-  saveBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-
-    var input = userInput.value
-
-    if (input === '') {
-      console.log(value);
-
-    }
-    localStorage.setItem('btn', input)
-  }
-
-);
+// var what = " waopsdifpoasfn";
+// localStorage.setItem('4', what)
 
   // event.target.previousElementSibling.value
   // TODO: Add a listener for click events on the save button. This code should
