@@ -122,17 +122,30 @@ blockClass();
 
 
   var saveBtn = document.querySelector('.btn');
-  var description = document.querySelectorAll('description')
- 
-    saveBtn.addEventListener('click', (event) => {
-      event.preventDefault();
-      // How do i set the value below equal to the id of timeblocks? I cant call a function into this so how else?
-      if (saveBtn) {
-        localStorage.setItem('value', description.value)
-        localStorage.getItem(description.value)
+  
+  var row9 = $('#9');
 
-      }
-    });
+
+  function saveFunction(event) {
+    
+// If i click the save button then I wnat everything in text area to be saved into local storage
+    if (event.target.classList[0] === 'fas') {
+      console.log(event)
+    }
+  };
+
+row9.on('click', saveFunction);
+
+
+    // saveBtn.addEventListener('click', (event) => {
+    //   event.preventDefault();
+    //   // How do i set the value below equal to the id of timeblocks? I cant call a function into this so how else?
+    //   if (saveBtn) {
+    //     localStorage.setItem('value', description.value)
+    //     localStorage.getItem(description.value)
+
+    //   }
+    // });
     
 
 
