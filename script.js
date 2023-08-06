@@ -121,16 +121,19 @@ blockClass();
 
 
 
-  var saveBtn = document.querySelector('.btn');
+ 
   
   var row9 = $('#9');
 
-
+  // event.currentTarget.classList[0]
   function saveFunction(event) {
     
 // If i click the save button then I wnat everything in text area to be saved into local storage
-    if (event.target.classList[0] === 'fas') {
-      console.log(event)
+    if (event.currentTarget.children[2].children[0].classList[0] === 'fas') {
+      value = event.currentTarget.children[1].textContent
+      localStorage.setItem('fas', value )
+      localStorage.getItem('fas')
+      console.log(event.currentTarget.children[1])
     }
   };
 
